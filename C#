@@ -1,0 +1,65 @@
+using System;
+using System.Runtime.ConstrainedExecution;
+
+namespace MyApplication
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            int a, b, c;
+            double delta, x1, x2;
+
+            //Solicitação dos dados:
+            Console.WriteLine("INSIRA OS DADOS ABAIXO");
+            Console.WriteLine();
+
+            Console.WriteLine("Digite o valor para A: ");
+            a = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+
+            Console.WriteLine("Digite o valor para B: ");
+            b = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+
+            Console.WriteLine("Digite o valor para C: ");
+            c = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("------------------------------------------------------------------");
+
+
+            // Possível incluir os dois If em uma única linha
+            // if (a == 0.0 || delta < 0.0)
+
+            if (a != 0)
+            {
+                //valor de DELTA
+                delta = (b * b) - (4 * a * c);
+
+                bool deltaPositivo = delta >= 0; // sugestão do visual studio
+                if (deltaPositivo)
+                {
+                    //função para raiz quadrada
+                    double sqrtDelta = Math.Sqrt(delta); //sqrt significa 'square root', ou raiz quadrada, em inglês
+
+                    //valor de X1 e X2
+                    x1 = ((-(b)) + sqrtDelta) / (2 * a);
+                    x2 = ((-(b)) - sqrtDelta) / (2 * a);
+                                  
+                    Console.WriteLine($"Resultado de X1 = {x1}\nResultado de X2 = {x2}");
+                }
+                else
+                {
+                    Console.WriteLine("Impossível calcular"); // quando DELTA for negativo
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("Impossível calcular"); // quando "a" for igual a zero
+            }
+        }
+    }
+}
